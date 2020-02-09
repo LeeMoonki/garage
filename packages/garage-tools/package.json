@@ -1,11 +1,11 @@
 {
-  "name": "garage",
-  "version": "1.0.0",
+  "name": "garage-tools",
+  "version": "0.0.1",
   "main": "index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/LeeMoonki/garage.git",
-    "directory": "packages/garage"
+    "directory": "packages/garage-tools"
   },
   "author": "LeeMoonki",
   "license": "MIT"
