@@ -1,11 +1,11 @@
 {
-  "name": "garage-tools",
+  "name": "@shinbaek/tool-case",
   "version": "0.0.1",
   "main": "index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/LeeMoonki/garage.git",
-    "directory": "packages/garage-tools"
+    "directory": "packages/tool-case"
   },
   "author": "LeeMoonki",
   "license": "MIT"
