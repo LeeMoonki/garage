@@ -12,12 +12,15 @@
   "scripts": {
     "build": "rollup -c"
   },
+  "keywords": [
+    "tool-case"
+  ],
+  "dependencies": {
+    "loose-envify": "^1.4.0"
+  },
   "browserify": {
     "transform": [
       "loose-envify"
     ]
-  },
-  "keywords": [
-    "tool-case"
-  ]
+  }
 }
