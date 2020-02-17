@@ -91,4 +91,4 @@ const objectTools = {
   isEmptyObject
 };
 
-module.exports = objectTools;
+export default objectTools;

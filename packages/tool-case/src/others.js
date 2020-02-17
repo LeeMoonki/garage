@@ -8,4 +8,4 @@ const otherTools = {
   wait
 };
 
-module.exports = otherTools;
+export default otherTools;

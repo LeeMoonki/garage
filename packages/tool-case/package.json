@@ -1,12 +1,23 @@
 {
   "name": "@shinbaek/tool-case",
   "version": "0.0.1",
-  "main": "index.js",
+  "author": "LeeMoonki",
   "repository": {
     "type": "git",
     "url": "https://github.com/LeeMoonki/garage.git",
     "directory": "packages/tool-case"
   },
-  "author": "LeeMoonki",
-  "license": "MIT"
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "browserify": {
+    "transform": [
+      "loose-envify"
+    ]
+  },
+  "keywords": [
+    "tool-case"
+  ]
 }

@@ -6,4 +6,4 @@ const arrayTools = {
   isUsefulArray
 };
 
-module.exports = arrayTools;
+export default arrayTools;

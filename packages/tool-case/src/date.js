@@ -9,4 +9,4 @@ const dateTools = {
   isDate
 };
 
-module.exports = dateTools;
+export default dateTools;
