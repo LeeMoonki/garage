@@ -84,9 +84,9 @@ function isEmptyObject(obj) {
 
 
 const ObjectTools = {
-  mapObject,
-  extractFields,
-  removeFields,
+  map: mapObject,
+  extract: extractFields,
+  remove: removeFields,
   cloneObject,
   isEmptyObject
 };
