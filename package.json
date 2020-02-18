@@ -2,5 +2,11 @@
   "private": true,
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "scripts": {
+    "build-tool-case": "yarn workspace @shinbaek/tool-case run build"
+  },
+  "dependencies": {
+    "jest": "^25.1.0"
+  }
 }

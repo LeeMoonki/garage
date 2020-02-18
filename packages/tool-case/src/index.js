@@ -1,13 +1,13 @@
-export { default as ObjectTools } from './object';
-export { default as ArrayTools } from './array';
-export { default as DateTools } from './date';
-export { default as OtherTools } from './others';
+import ObjectTools from './object';
+import ArrayTools from './array';
+import DateTools from './date';
+import OtherTools from './others';
+import StringTools from './string';
 
-// const toolcase = {
-//   ...objectTools,
-//   ...arrayTools,
-//   ...dateTools,
-//   ...others
-// };
-
-// module.exports = toolcase;
+export default {
+  tarray: ArrayTools,
+  tdate: DateTools,
+  tobject: ObjectTools,
+  tother: OtherTools,
+  tstring: StringTools,
+};

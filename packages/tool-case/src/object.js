@@ -83,7 +83,7 @@ function isEmptyObject(obj) {
 }
 
 
-const objectTools = {
+const ObjectTools = {
   mapObject,
   extractFields,
   removeFields,
@@ -91,4 +91,4 @@ const objectTools = {
   isEmptyObject
 };
 
-export default objectTools;
+export default ObjectTools;

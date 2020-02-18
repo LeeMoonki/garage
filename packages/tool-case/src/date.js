@@ -5,8 +5,8 @@ function isDate(date) {
   return !isNaN(date);
 }
 
-const dateTools = {
+const DateTools = {
   isDate
 };
 
-export default dateTools;
+export default DateTools;

@@ -21,3 +21,5 @@ TodoList.md
 
 
 /packages/*/cjs/
+/packages/*/esm/
+/packages/*/umd/

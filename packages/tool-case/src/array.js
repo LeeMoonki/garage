@@ -2,8 +2,8 @@ function isUsefulArray(arr) {
   return arr instanceof Array && arr.length > 0;
 }
 
-const arrayTools = {
+const ArrayTools = {
   isUsefulArray
 };
 
-export default arrayTools;
+export default ArrayTools;

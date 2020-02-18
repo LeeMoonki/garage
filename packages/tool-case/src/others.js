@@ -4,8 +4,8 @@ function wait(timeout) {
   });
 }
 
-const otherTools = {
+const OtherTools = {
   wait
 };
 
-export default otherTools;
+export default OtherTools;

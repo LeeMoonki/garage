@@ -15,6 +15,11 @@
   "keywords": [
     "tool-case"
   ],
+  "files": [
+    "README.md",
+    "index.js",
+    "cjs/"
+  ],
   "dependencies": {
     "loose-envify": "^1.4.0"
   },
