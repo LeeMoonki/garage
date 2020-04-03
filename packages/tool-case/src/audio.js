@@ -16,7 +16,7 @@
        // After slicing the audio file, callback is called with AudioSourceResult instance.
        
        audioSource.start(); // if want to start
-       audioSource.start(1000, 2000); // if want to play from 1s to 2s for audioSource
+       audioSource.start(1, 2); // if want to play from 1s to 2s for audioSource
 
        audioSource.pause(); // pause the player
 
@@ -134,6 +134,9 @@ function fromDecodeToSlice(begin, end, callback, arrayBuffer) {
   let error = null;
 
   audioCtx.decodeAudioData(arrayBuffer, audioBuffer => {
+    if (!begin) { begin = 0; }
+    if (!end) { end = audioBuffer.duration * 1000; }
+    
     AudioBufferSlice(audioBuffer, begin, end, (errorInAudioBufferSlice, slicedAudioBuffer) => {
       if (errorInAudioBufferSlice != null) {
         error = errorInAudioBufferSlice;
