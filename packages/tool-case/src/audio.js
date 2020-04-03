@@ -153,6 +153,8 @@ function fromDecodeToSlice(begin, end, callback, arrayBuffer) {
         gainNode.connect(audioCtx.destination);
 
         callback(new AudioSourceResult({
+          begin,
+          end,
           arrayBuffer,
           audioBuffer,
           slicedAudioBuffer,
