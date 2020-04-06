@@ -231,6 +231,8 @@ AudioSourceResult.prototype.initialize = function() {
   this.endTime = 0;
   this.timeSpan = 0;
   this.accumulateTimeSpan = 0;
+  clearInterval(this.timeInterval);
+  this.timeInterval = null;
 };
 
 AudioSourceResult.prototype.setPlayingTimerInterval = function(interval) {
@@ -289,21 +291,33 @@ AudioSourceResult.prototype.start = function(begin, end) {
 
 AudioSourceResult.prototype.pause = function() {
   this.isPause = true;
-  this.playingSource.stop();
+  clearInterval(this.timeInterval);
+  this.timeInterval = null;
 
-  this.endTime = this.playingSource.context.currentTime;
-  this.timeSpan = this.playingSource.context.currentTime - this.startTime;
+  if (this.playingSource) {
+    this.playingSource.stop();
 
+    this.endTime = this.playingSource.context.currentTime;
+    this.timeSpan = this.playingSource.context.currentTime - this.startTime;
 
-  this.playingSource.removeEventListener('ended', endedEventListener);
-  this.playingSource = null;
+    this.playingSource.removeEventListener('ended', endedEventListener);
+    this.playingSource = null;
+  }
 }
 
 AudioSourceResult.prototype.stop = function() {
-  this.playingSource.stop();
-  
-  this.playingSource.removeEventListener('ended', endedEventListener);
-  this.playingSource = null;
+  this.isPause = false;
+
+  clearInterval(this.timeInterval);
+  this.timeInterval = null;
+
+  if (this.playingSource) {
+    this.playingSource.stop();
+    this.playingSource.removeEventListener('ended', endedEventListener);
+    this.playingSource = null;
+  }
+
+  this.initialize();
 }
 
 AudioSourceResult.prototype.on = function(eventName, listener) {
