@@ -1,14 +1,36 @@
-function mapObject(obj, predicate) {
+function isObject(obj) {
+  return typeof obj === 'object';
+}
+
+function keysOf(obj) {
+  return isObject(obj) ? Object.keys(obj) : [];
+}
+
+function filterObject(obj, predicate) {
   const result = {};
 
-  if (typeof obj !== 'object') {
+  if (!isObject(obj)) {
     return result;
   }
 
-  for (const key in obj) {
+  for (const key of keysOf(obj)) {
     if (predicate(key, obj)) {
       result[key] = obj[key];
     }
+  }
+
+  return result;
+}
+
+function mapObject(obj, mapper) {
+  const result = {};
+
+  if (!isObject(obj)) {
+    return result;
+  }
+
+  for (const key of keysOf(obj)) {
+    result[key] = mapper(obj[key], key, obj);
   }
 
   return result;
@@ -27,7 +49,7 @@ function extractFields(obj, keyList, exact) {
     };
   }
 
-  return mapObject(obj, (key, compObj) => {
+  return filterObject(obj, (key, compObj) => {
     for (const target of keyList) {
       if (compareFunction(key, target)) {
         return true;
@@ -50,7 +72,7 @@ function removeFields(obj, keyList, exact) {
     };
   }
 
-  return mapObject(obj, (key, compObj) => {
+  return filterObject(obj, (key, compObj) => {
     for (const target of keyList) {
       if (compareFunction(key, target)) {
         return false;
@@ -73,10 +95,8 @@ function cloneObject(obj) {
 }
 
 function isEmptyObject(obj) {
-  for (const prop in obj) {
-    if (obj.hasOwnProperty(prop)) {
-      return false;
-    }
+  if (keysOf(obj).length > 0) {
+    return false;
   }
 
   return JSON.stringify(obj) === JSON.stringify({});
@@ -84,6 +104,9 @@ function isEmptyObject(obj) {
 
 
 const ObjectTools = {
+  isObject,
+  keysOf,
+  filter: filterObject,
   map: mapObject,
   extract: extractFields,
   remove: removeFields,

@@ -325,7 +325,7 @@ AudioSourceResult.prototype.on = function(eventName, listener) {
 };
 
 const AudioTools = {
-  AudioContext,
+  audioContext,
   AudioBufferSlice,
   audioBufferSlice
 };

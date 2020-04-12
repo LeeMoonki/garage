@@ -1,7 +1,7 @@
 import tobject from '../src/object';
 
 describe('ObjectTools', () => {
-  describe('map', () => {
+  describe('filter', () => {
     let testObj = {
       foo1: 10,
       foo: 20,
@@ -11,11 +11,11 @@ describe('ObjectTools', () => {
     };
 
     test('default value', () => {
-      expect(tobject.map()).toEqual({});
+      expect(tobject.filter()).toEqual({});
     });
 
     test('simple predicate', () => {
-      const result = tobject.map(testObj, (key, obj) => {
+      const result = tobject.filter(testObj, (key, obj) => {
         if (obj[key] > 20) {
           return true;
         }
@@ -32,7 +32,7 @@ describe('ObjectTools', () => {
     test('extract', () => {
       const testKeyArr = ['foo', 'bar'];
   
-      const result = tobject.map(testObj, (key, obj) => {
+      const result = tobject.filter(testObj, (key, obj) => {
         for (const target of testKeyArr) {
           if (key.indexOf(target) > -1) {
             return true;
@@ -46,6 +46,51 @@ describe('ObjectTools', () => {
         foo: 20,
         bar: 100,
         bar2: 200,
+      });
+    });
+  });
+
+  describe('map', () => {
+    let testObj = {
+      foo1: 10,
+      foo: 20,
+      bar: 100,
+      bar2: 200,
+      poo: 30,
+    };
+
+    test('default value', () => {
+      expect(tobject.filter()).toEqual({});
+    });
+
+    test('simple map1', () => {
+      const result = tobject.map(testObj, (value, key, obj) => {
+        return value + 7;
+      });
+  
+      expect(result).toEqual({
+        foo1: 17,
+        foo: 27,
+        bar: 107,
+        bar2: 207,
+        poo: 37,
+      });
+    });
+
+    test('simple map2', () => {
+      const result = tobject.map(testObj, (value, key, obj) => {
+        return {
+          [key]: value,
+          newVal: value + 7
+        };
+      });
+  
+      expect(result).toEqual({
+        foo1: {foo1: 10, newVal: 17},
+        foo: {foo: 20, newVal: 27},
+        bar: {bar: 100, newVal: 107},
+        bar2: {bar2: 200, newVal: 207},
+        poo: {poo: 30, newVal: 37},
       });
     });
   });
@@ -102,5 +147,10 @@ describe('ObjectTools', () => {
         foo: 200,
       });
     });
+  });
+
+  test('isEmptyObject', () => {
+    expect(tobject.isEmptyObject({})).toBe(true);
+    expect(tobject.isEmptyObject({ a: 10 })).toBe(false);
   });
 });
