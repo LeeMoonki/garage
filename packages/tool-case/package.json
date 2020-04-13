@@ -4,8 +4,7 @@
   "author": "LeeMoonki",
   "repository": {
     "type": "git",
-    "url": "https://github.com/LeeMoonki/garage.git",
-    "directory": "packages/tool-case"
+    "url": "https://github.com/LeeMoonki/garage/tree/master/packages/tool-case"
   },
   "license": "MIT",
   "main": "index.js",
